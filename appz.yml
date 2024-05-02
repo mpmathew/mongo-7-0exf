@@ -1,0 +1,33 @@
+app:
+    name: Mongo
+    code: MONGO
+    notify: mpmathew@ecloudcontrol.com
+    
+build:
+    version: 7.0
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: mongo-7.0exf
+    
+deploy:
+    context: exf/DEV
+    type: statefulset
+    ingress: none
+    replicas: 1
+    port:
+    - 27017
+    
+volumes:
+  - claim: mongo-data
+    mount: /data/db
+    name: data
+    size: 5Gi
+    mode: ReadWriteOnce   
+    
+properties:
+    TZ: Asia/Kolkata
+    MONGO_INITDB_ROOT_USERNAME: admin
+    MONGO_INITDB_ROOT_PASSWORD:
+      vault: MONGO_INITDB_ROOT_PASSWORD
+    revision : 84
