@@ -30,4 +30,4 @@ properties:
     MONGO_INITDB_ROOT_USERNAME: admin
     MONGO_INITDB_ROOT_PASSWORD:
       vault: MONGO_INITDB_ROOT_PASSWORD
-    revision : 86
+    revision : 87
